@@ -1,0 +1,44 @@
+#Script for ionization system
+
+gmx editconf -f che_ini.pdb -o che.gro
+gmx editconf -f che.gro -o che_newbox.gro -box 4 4 4 -center 2 2 2
+
+gmx solvate -cp che_newbox.gro -cs OH_box.gro -o che_OH.gro -p che.top
+gmx solvate -cp che_OH.gro -cs spc216.gro -o che_solv.gro -p che.top
+
+gmx grompp -f ions.mdp -c che_solv.gro -p che.top -o ions.tpr
+
+echo 8 | gmx genion -s ions.tpr -o che_solv_ions.gro -p che.top -pname H -nname CL -neutral -rmin 0.1
+
+gmx grompp -f minim.mdp -c che_solv_ions.gro -p che.top -o em.tpr -maxwarn 1
+gmx mdrun -v -deffnm em
+
+echo Potential | gmx energy -f em.edr -o potential.xvg
+
+gmx grompp -f nvt.mdp -c em.gro -r em.gro -p che.top -o nvt.tpr -maxwarn 1
+gmx mdrun -deffnm nvt
+
+echo Temperature | gmx energy -f nvt.edr -o nvt_temperature.xvg
+
+gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p che.top -o npt.tpr -maxwarn 1
+gmx mdrun -deffnm npt
+
+echo Pressure | gmx energy -f npt.edr -o npt_pressure.xvg
+echo Density | gmx energy -f npt.edr -o npt_density.xvg
+
+gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p che.top -o md_0_1.tpr -maxwarn 1
+gmx mdrun -deffnm md_0_1
+echo Temperature | gmx energy -f md_0_1.edr -o md_temperature.xvg
+echo Pressure | gmx energy -f md_0_1.edr -o md_pressure.xvg
+echo Density | gmx energy -f md_0_1.edr -o md_density.xvg
+
+echo 2 0 | gmx trjconv -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -center
+echo 2 0 | gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd.xvg -tu ns
+echo 2 | gmx gyrate -s md_0_1.tpr -f md_0_1_noPBC.xtc -o gyrate.xvg
+
+gmx grompp -f ie.mdp -c md_0_1.gro -t md_0_1.cpt -p che.top -o ie.tpr -maxwarn 1
+gmx mdrun -deffnm ie -rerun md_0_1.xtc -ntomp 8
+
+(echo Coul-SR:CHE-H; echo LJ-SR:CHE-H; echo 0) | gmx energy -f ie.edr -o interaction_energy_CHE_H.xvg
+(echo Coul-SR:CHE-SOL; echo LJ-SR:CHE-SOL; echo 0) | gmx energy -f ie.edr -o interaction_energy_CHE_SOL.xvg
+(echo Coul-SR:CHE-OH; echo LJ-SR:CHE-OH; echo 0) | gmx energy -f ie.edr -o interaction_energy_CHE_OH.xvg
