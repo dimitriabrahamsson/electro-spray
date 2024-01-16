@@ -1,0 +1,6 @@
+REMARK  GENERATE LIGAND                                                               
+REMARK   DATE:     8/26/23     19:59:54      CREATED BY USER: apache                  
+ATOM      1  O1  OH  O   1       0.980   0.000   0.000  1.00  0.00      OH  
+ATOM      2  H1  OH  O   1       0.000   0.000   0.000  1.00  0.00      OH  
+TER       3      OH       1
+END
