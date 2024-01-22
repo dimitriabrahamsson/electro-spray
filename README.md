@@ -10,7 +10,7 @@ The 'OH box files' folder contains the parameter and topology files for generati
 
 The 'mdp files' folder contains the files that were used for the simulations with GROMACS.
 
-
+The python scripts cgenff_charmm2gmx.py and charmm2gromacs-pvm.py were used to convert the topology files from CHARMM to GROMACS. The topology files were generated with the CHARMM-GUI online platform (https://www.charmm-gui.org/),
 
 
 
