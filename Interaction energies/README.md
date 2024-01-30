@@ -6,3 +6,5 @@ Run first the script "figures.py" to generate the medians, percentiles and stand
 Run then "Summary2.py" to summarize the data into one .csv file.
 
 Finally, run "multireg.py" to develop the model.
+
+The file "ChemNamesAndProps.csv" contains the names and properties of the chemicals and it's part of the "multireg.py" script.
