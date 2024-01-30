@@ -1,4 +1,4 @@
-#### Here is how to run the model
+### Here is how to run and test the model:
 
 The folder "xvg files" contains the .xvg files with the calculated Lennart-Jones and Coulomb interactions between the chemicals and the H+ ions.
 
