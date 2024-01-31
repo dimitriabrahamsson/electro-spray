@@ -1,5 +1,6 @@
 ## Welcome to ElectroChem!
 
+### Electrospray ionization of small molecules
 ### ElectroChem is a computational workflow for predicting the ionization efficiency of chemicals in electrospray ionization using principles of computational chemistry. 
 
 #### As opposed to machine learning approaches, ElectroChem is a theory-based approach and does not require large datasets to train and test. 
@@ -15,7 +16,5 @@ The python scripts "cgenff_charmm2gmx.py" and "charmm2gromacs-pvm.py" were used 
 The "mdrunchem" script was used to automate the simulations and the calculations of the Lennart-Jones interactions and Coulomb interactions between the compounds and the H+ ions.
 
 The folder "interaction energies" contains all the files that were generated from the simulations and the python scripts that were used to construct the model.
-
-Electrospray ionization of small molecules
 
 ![TOC](https://github.com/dimitriabrahamsson/electro-chem/assets/56902317/c06dd01a-6b5f-47b1-8b60-d9c914593ef9)
