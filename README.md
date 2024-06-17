@@ -1,11 +1,11 @@
-## Welcome to ElectroChem!
+## Welcome to ElectroSpray!
 
 ### Electrospray ionization of small molecules
-### ElectroChem is a computational workflow for predicting the ionization efficiency of chemicals in electrospray ionization using principles of computational chemistry. 
+### ElectroSpray is a computational workflow for predicting the ionization efficiency of chemicals in electrospray ionization using principles of computational chemistry. 
 
-#### As opposed to machine learning approaches, ElectroChem is a theory-based approach and does not require large datasets to train and test. 
+#### As opposed to machine learning approaches, ElectroSpray is a theory-based approach and does not require large datasets to train and test. 
 
-ElectroChem is part of a project that is currently under review. 
+ElectroSpray is part of a project that is currently under review. 
 
 The "OH box files" folder contains the parameter and topology files for generating a cube containing OH- ions. The box was later used to dissolve each chemical used in the calculations. The sytem was neutralized by the addition of H+ ions. 
 
