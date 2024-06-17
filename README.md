@@ -17,4 +17,4 @@ The "mdrunchem" script was used to automate the simulations and the calculations
 
 The folder "interaction energies" contains all the files that were generated from the simulations and the python scripts that were used to construct the model.
 
-![TOC](https://github.com/dimitriabrahamsson/electro-chem/assets/56902317/c06dd01a-6b5f-47b1-8b60-d9c914593ef9)
+![TOC](https://github.com/dimitriabrahamsson/electro-chem/assets/56902317/a1521a72-11f6-42fa-9f31-f634832e3fd0)
